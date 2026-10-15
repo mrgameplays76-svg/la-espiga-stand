@@ -7,8 +7,8 @@
   <meta name="description" content="Conoce la experiencia de práctica de Trabajo Social en la Escuela Especial Diferencial La Espiga: aprendizaje, convivencia, familias y comunidad.">
   <title>La Espiga | Experiencia de práctica en Trabajo Social</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=3">
+  <script src="script.js?v=3" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
@@ -41,6 +41,7 @@
             <a class="button button-secondary" href="#interactua">Probar actividad interactiva</a>
           </div>
           <p class="hero-byline">Una presentación realizada por <strong>Constanza Torres Soto</strong> y <strong>Tais Morales Bobadilla</strong>.</p>
+          <a class="hero-gallery-link" href="#galeria">Conoce los momentos de la práctica <span aria-hidden="true">↘</span></a>
         </div>
         <div class="hero-art" aria-hidden="true">
           <div class="orbit orbit-one"></div>
@@ -64,7 +65,7 @@
           <div class="access-symbol" aria-hidden="true">Aa</div>
           <div>
             <h2 id="access-title">Esta página es para todas las personas</h2>
-            <p>Puedes agrandar las letras, ver un resumen fácil, aumentar el contraste o escuchar un resumen.</p>
+            <p>Puedes ajustar el tamaño de las letras, activar el alto contraste o ver información en lectura fácil.</p>
           </div>
         </div>
         <div class="access-tools" role="group" aria-label="Opciones de accesibilidad">
@@ -72,7 +73,6 @@
           <button type="button" id="bigger-text" class="tool-btn" aria-label="Aumentar el tamaño de la letra">A+</button>
           <button type="button" id="contrast-toggle" class="tool-btn tool-wide" aria-pressed="false">Alto contraste</button>
           <button type="button" id="easy-toggle" class="tool-btn tool-wide" aria-expanded="false" aria-controls="lectura-facil">Lectura fácil</button>
-          <button type="button" id="listen-toggle" class="tool-btn tool-wide">▶ Escuchar resumen</button>
         </div>
         <p class="assistive-status" id="reader-status" role="status" aria-live="polite"></p>
       </div>
@@ -201,20 +201,49 @@
     </section>
 
     <section id="galeria" class="section gallery-section" aria-labelledby="gallery-title">
-      <div class="container gallery-inner">
-        <div class="gallery-message">
-          <span class="kicker">05 · Nuestra experiencia en imágenes</span>
-          <h2 id="gallery-title">Momentos que cuentan una historia</h2>
-          <p>Este espacio está reservado para compartir fotografías de la práctica, respetando siempre la privacidad y la autorización de quienes aparecen en ellas.</p>
-          <p class="gallery-notice"><span aria-hidden="true">●</span> Fotografías pendientes de autorización para publicación pública.</p>
+      <div class="container">
+        <div class="gallery-heading">
+          <div class="section-heading">
+            <span class="kicker">05 · Nuestra experiencia en imágenes</span>
+            <h2 id="gallery-title">Así se vive la experiencia en La Espiga</h2>
+            <p>Cuatro fotografías compartidas en el material de la práctica. Selecciona una imagen para verla más grande y recorrer los distintos momentos.</p>
+          </div>
+          <span class="gallery-count"><span aria-hidden="true">✿</span> 4 fotografías</span>
         </div>
-        <div class="gallery-placeholders" aria-label="Espacios para futuras fotografías autorizadas">
-          <div class="placeholder-photo photo-a"><span aria-hidden="true">▧</span><small>Espacio para fotografía</small></div>
-          <div class="placeholder-photo photo-b"><span aria-hidden="true">✿</span><small>Compartiendo experiencias</small></div>
-          <div class="placeholder-photo photo-c"><span aria-hidden="true">☼</span><small>Aprendiendo en comunidad</small></div>
+        <div class="gallery-filters" role="group" aria-label="Filtrar fotografías">
+          <button type="button" class="gallery-filter" data-filter="todas" aria-pressed="true">Todas las fotos <span>4</span></button>
+          <button type="button" class="gallery-filter" data-filter="actividades" aria-pressed="false">Actividades <span>2</span></button>
+          <button type="button" class="gallery-filter" data-filter="preparacion" aria-pressed="false">Preparación <span>2</span></button>
         </div>
+        <div class="gallery-grid" aria-label="Fotografías de la práctica">
+          <button type="button" class="photo-card photo-feature" data-photo="0" data-category="actividades" aria-label="Ampliar fotografía 1: actividad grupal en la sala de clases">
+            <img src="foto-01-taller-en-aula.jpg" alt="Grupo de estudiantes participando en una actividad dentro de una sala de clases" width="1600" height="1200" loading="lazy" decoding="async">
+            <span class="photo-info"><span class="photo-type">Actividades</span><strong>Compartiendo en el aula</strong><small>Ver fotografía <span aria-hidden="true">↗</span></small></span>
+          </button>
+          <button type="button" class="photo-card photo-tall" data-photo="1" data-category="preparacion" aria-label="Ampliar fotografía 2: materiales y planificación de la práctica">
+            <img src="foto-02-preparacion-de-material.jpg" alt="Mesa de trabajo con cuaderno, documentos, computador y otros materiales de preparación" width="960" height="1280" loading="lazy" decoding="async">
+            <span class="photo-info"><span class="photo-type">Preparación</span><strong>Organización y materiales</strong><small>Ver fotografía <span aria-hidden="true">↗</span></small></span>
+          </button>
+          <button type="button" class="photo-card photo-tall" data-photo="2" data-category="preparacion" aria-label="Ampliar fotografía 3: jornada de trabajo en la escuela">
+            <img src="foto-03-trabajo-en-la-escuela.jpg" alt="Participantes trabajando con materiales y anotaciones dentro de una sala escolar" width="960" height="1280" loading="lazy" decoding="async">
+            <span class="photo-info"><span class="photo-type">Preparación</span><strong>Trabajo y acompañamiento</strong><small>Ver fotografía <span aria-hidden="true">↗</span></small></span>
+          </button>
+          <button type="button" class="photo-card photo-wide" data-photo="3" data-category="actividades" aria-label="Ampliar fotografía 4: presentación y actividad con estudiantes">
+            <img src="foto-04-actividad-grupal.jpg" alt="Estudiantes en una sala de clases observando una presentación a cargo de dos expositoras" width="1875" height="2500" loading="lazy" decoding="async">
+            <span class="photo-info"><span class="photo-type">Actividades</span><strong>Aprendiendo en comunidad</strong><small>Ver fotografía <span aria-hidden="true">↗</span></small></span>
+          </button>
+        </div>
+        <p class="gallery-helper"><span aria-hidden="true">↗</span> Toca cualquier imagen para abrirla. Puedes usar las flechas para cambiar de fotografía.</p>
       </div>
     </section>
+
+    <dialog id="photo-dialog" class="photo-dialog" aria-labelledby="dialog-title">
+      <div class="dialog-layout">
+        <div class="dialog-top"><span class="dialog-kicker">Galería · La Espiga</span><button class="dialog-close" id="dialog-close" type="button" aria-label="Cerrar fotografía">✕ <span>Cerrar</span></button></div>
+        <div class="dialog-photo-wrap"><img id="dialog-image" src="foto-01-taller-en-aula.jpg" alt="" width="1600" height="1200"></div>
+        <div class="dialog-bottom"><button class="dialog-arrow" type="button" id="dialog-prev" aria-label="Fotografía anterior">←</button><div class="dialog-caption"><strong id="dialog-title">Compartiendo en el aula</strong><span id="dialog-counter">Foto 1 de 4</span></div><button class="dialog-arrow" type="button" id="dialog-next" aria-label="Fotografía siguiente">→</button></div>
+      </div>
+    </dialog>
 
     <section class="section references-section" aria-labelledby="references-title">
       <div class="container">
@@ -244,7 +273,7 @@
   <footer class="site-footer">
     <div class="container footer-top">
       <div class="footer-message"><h2>Las diferencias nos enriquecen. <span>El respeto nos une.</span></h2><p>Experiencia de práctica · Carrera de Trabajo Social</p><p>Constanza Torres Soto y Tais Morales Bobadilla</p></div>
-      <div class="footer-logos" aria-label="Instituciones de la experiencia"><img src="assets/logo-escuela-la-espiga.png" alt="Escudo de la Escuela La Espiga" width="78" height="83"><img src="logo-universidad-autonoma.png" alt="Universidad Autónoma de Chile" width="190" height="97"></div>
+      <div class="footer-logos" aria-label="Instituciones de la experiencia"><img src="logo-escuela-la-espiga.png" alt="Escudo de la Escuela La Espiga" width="78" height="83"><img src="logo-universidad-autonoma.png" alt="Universidad Autónoma de Chile" width="190" height="97"></div>
     </div>
     <div class="container footer-bottom"><p>Presentación informativa con contenido proporcionado por las estudiantes.</p><a href="#inicio">Volver arriba ↑</a></div>
   </footer>

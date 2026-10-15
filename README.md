@@ -1,41 +1,29 @@
-# La Espiga — página interactiva de práctica de Trabajo Social
+# La Espiga — página interactiva, versión mejorada
 
-Sitio web estático para un stand educativo de **Constanza Torres Soto** y **Tais Morales Bobadilla**, con información entregada para la experiencia de práctica de Trabajo Social en la Escuela Especial Diferencial La Espiga.
+Web para stand de práctica de Trabajo Social de **Constanza Torres Soto** y **Tais Morales Bobadilla**, según el PDF facilitado. Incluye las **4 fotografías originales** del documento (páginas 5, 6 y 7), una galería ampliable, filtros, actividades, fundamentos, referencias, lectura fácil y ajustes de accesibilidad. No tiene audio de resumen ni recopila datos personales a través de formularios.
 
-## Cómo abrirlo
+## IMPORTANTE: actualizar el repositorio existente
 
-Abre `index.html` con cualquier navegador. No usa frameworks, cuentas, bases de datos, rastreadores ni bibliotecas externas. El audio usa la voz de lectura disponible en el navegador y puede variar por dispositivo.
+El repositorio usado en este proyecto es `mrgameplays76-svg/la-espiga-stand`.
 
-## Cómo publicarlo con GitHub Pages
+1. Extrae el ZIP.
+2. Entra en https://github.com/mrgameplays76-svg/la-espiga-stand y elige **Add file > Upload files**.
+3. Sube todos los archivos de esta carpeta directamente a la raíz del repositorio (donde ya existe `index.html`): `index.html`, `styles.css`, `script.js`, `.nojekyll`, los 2 logos, `favicon.svg` y los 4 archivos `foto-*.jpg`. **No subas el ZIP sin extraer**.
+4. Si GitHub detecta archivos con el mismo nombre, confirma que se reemplacen y pulsa **Commit changes**. Si tu interfaz no permite reemplazarlos arrastrándolos, abre cada archivo que haya cambiado, pulsa el lápiz y pega el contenido actualizado, o utiliza GitHub Desktop.
+5. Espera la publicación automática de GitHub Pages. Abre https://mrgameplays76-svg.github.io/la-espiga-stand/ y recarga con Ctrl+F5.
+6. Prueba el menú y las fotografías, los filtros, las flechas en la galería y las actividades tanto en PC como en celular.
 
-1. En GitHub crea un repositorio **público** llamado, por ejemplo, `la-espiga-stand`. En GitHub Free la publicación de Pages desde repositorios privados no está disponible.
-2. Sube **el contenido de esta carpeta** al directorio raíz del repositorio: `index.html`, `styles.css`, `script.js`, `assets/`, `.nojekyll` y este README. Si subes un ZIP sin extraer o una carpeta contenedora, Pages no verá `index.html`.
-3. En el repositorio abre **Settings > Pages**.
-4. En **Build and deployment**, selecciona **Deploy from a branch**.
-5. Selecciona **main** y **/(root)**, luego **Save**.
-6. Espera la publicación. El enlace normalmente será `https://TU-USUARIO.github.io/la-espiga-stand/`, pero usa la dirección real mostrada en Pages.
-7. Abre el enlace desde un teléfono, prueba los botones y recién entonces crea un QR a partir de esa URL exacta. Prueba una impresión antes del stand.
+**Rutas:** Esta versión usa archivos en la raíz del repositorio, porque los logos ya fueron subidos allí. No necesita carpeta `assets/`.
 
-Documentación oficial: https://docs.github.com/es/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+**Acceso:** GitHub Pages en este repositorio público hace que la página y sus fotos sean accesibles públicamente para cualquier persona con la URL; distribuir el QR solo dentro del colegio no restringe el acceso. Antes de subir fotografías del entorno escolar, comprueba que su difusión pública sea compatible con las indicaciones del establecimiento.
 
-## Accesibilidad
-
-- Tamaño de texto ajustable, alto contraste, resumen en lectura fácil y opción de lectura en voz alta cuando el navegador la admite.
-- Actividades de exploración emocional y convivencia con botones grandes, explicaciones sencillas, navegación por teclado y mensajes anunciados mediante `aria-live`.
-- Sin cronómetros, puntuaciones, audio que se reproduzca solo ni animaciones necesarias para entender.
-- Apartados académicos y fuentes bibliográficas desplegables para quienes desean profundizar.
-
-## Fotografías y privacidad
-
-**No se han publicado fotografías de estudiantes**. El PDF de origen tiene imágenes con personas que podrían ser menores de edad: antes de usar fotos se debe tener autorización válida de la escuela y los responsables cuando corresponda. Evita documentos, datos personales, identificaciones y rostros sin permiso.
-
-La página es pública cuando habilitas GitHub Pages, aunque el QR se distribuya solo en el stand.
-
-## Estructura
-
-- `index.html`: información y actividades.
-- `styles.css`: estilos accesibles y diseño adaptable.
-- `script.js`: funcionalidad sin dependencias.
-- `assets/`: escudos del material proporcionado y favicon.
-- `fotografias-autorizadas/`: instrucciones; no incluye fotografías de estudiantes.
-- `.nojekyll`: indica a GitHub Pages que sirva el HTML directamente.
+## Contenido del paquete
+- `index.html`: estructura, textos y fotografías.
+- `styles.css`: estilos y diseño adaptable.
+- `script.js`: interacciones, filtros de galería y visualizador.
+- `foto-01-taller-en-aula.jpg`: imagen 1 de la página 5 del PDF.
+- `foto-02-preparacion-de-material.jpg`: imagen 2 de la página 5.
+- `foto-03-trabajo-en-la-escuela.jpg`: imagen de la página 6.
+- `foto-04-actividad-grupal.jpg`: imagen de la página 7.
+- `logo-escuela-la-espiga.png`, `logo-universidad-autonoma.png`, `favicon.svg`: imágenes institucionales.
+- `.nojekyll`: evita procesar los archivos mediante Jekyll.

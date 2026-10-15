@@ -4,13 +4,10 @@
   const smaller = document.getElementById('smaller-text');
   const bigger = document.getElementById('bigger-text');
   const contrast = document.getElementById('contrast-toggle');
-  const listen = document.getElementById('listen-toggle');
   const status = document.getElementById('reader-status');
   const easyToggle = document.getElementById('easy-toggle');
   const easyOverview = document.getElementById('lectura-facil');
   let scale = 1;
-  let speechActive = false;
-  const summary = 'Bienvenidas y bienvenidos a la experiencia de práctica en la Escuela Especial Diferencial La Espiga. Esta página fue realizada por Constanza Torres Soto y Tais Morales Bobadilla, estudiantes de Trabajo Social. En la escuela, se busca promover la autonomía, la convivencia y la participación. La práctica considera el aprendizaje con apoyos visuales, actividades sobre emociones, convivencia y trabajo con las familias. Puedes recorrer las secciones para conocer las actividades y los enfoques de Trabajo Social.';
 
   const sayStatus = (value) => { status.textContent = value; };
   const changeScale = (difference) => {
@@ -86,42 +83,60 @@
     journeyDetail.append(heading, paragraph);
   }));
 
-  const speechSupported = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
-  function resetSpeechUI() {
-    speechActive = false;
-    listen.textContent = '▶ Escuchar resumen';
-    listen.setAttribute('aria-pressed', 'false');
+  // Galería: categorías, visualización ampliada y controles de teclado.
+  const galleryCards = [...document.querySelectorAll('.photo-card')];
+  const filterButtons = [...document.querySelectorAll('.gallery-filter')];
+  const galleryGrid = document.querySelector('.gallery-grid');
+  const dialog = document.getElementById('photo-dialog');
+  const dialogImage = document.getElementById('dialog-image');
+  const dialogTitle = document.getElementById('dialog-title');
+  const dialogCounter = document.getElementById('dialog-counter');
+  const closeDialog = document.getElementById('dialog-close');
+  const previousPhoto = document.getElementById('dialog-prev');
+  const nextPhoto = document.getElementById('dialog-next');
+  let activePhoto = 0;
+  let lastOpenedCard = null;
+
+  filterButtons.forEach(button => button.addEventListener('click', () => {
+    const filter = button.dataset.filter;
+    filterButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    galleryCards.forEach(card => { card.hidden = filter !== 'todas' && card.dataset.category !== filter; });
+    galleryGrid.classList.toggle('is-filtered', filter !== 'todas');
+  }));
+
+  function showPhoto(index) {
+    const visible = galleryCards.filter(card => !card.hidden);
+    if (!visible.length) return;
+    const choice = ((index % visible.length) + visible.length) % visible.length;
+    const card = visible[choice];
+    activePhoto = choice;
+    const source = card.querySelector('img');
+    dialogImage.src = source.getAttribute('src');
+    dialogImage.alt = source.alt;
+    dialogTitle.textContent = card.querySelector('.photo-info strong').textContent;
+    dialogCounter.textContent = `Fotografía ${choice + 1} de ${visible.length}`;
   }
-  if (!speechSupported) {
-    listen.hidden = true;
-    sayStatus('La lectura en voz alta no está disponible en este navegador.');
-  } else {
-    listen.setAttribute('aria-pressed', 'false');
-    listen.addEventListener('click', () => {
-      if (speechActive) {
-        window.speechSynthesis.cancel();
-        resetSpeechUI();
-        sayStatus('Lectura detenida.');
-        return;
-      }
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(summary);
-      utterance.lang = 'es-CL';
-      utterance.rate = 0.87;
-      utterance.pitch = 1;
-      utterance.onend = () => { resetSpeechUI(); sayStatus('Terminó la lectura del resumen.'); };
-      utterance.onerror = (event) => {
-        resetSpeechUI();
-        if (event.error !== 'canceled' && event.error !== 'interrupted') {
-          sayStatus('No se pudo reproducir el audio en este dispositivo.');
-        }
-      };
-      speechActive = true;
-      listen.textContent = '■ Detener lectura';
-      listen.setAttribute('aria-pressed', 'true');
-      sayStatus('Leyendo el resumen en voz alta.');
-      window.speechSynthesis.speak(utterance);
-    });
-    window.addEventListener('pagehide', () => window.speechSynthesis.cancel());
-  }
+  galleryCards.forEach(card => card.addEventListener('click', () => {
+    const visible = galleryCards.filter(item => !item.hidden);
+    lastOpenedCard = card;
+    showPhoto(visible.indexOf(card));
+    if (typeof dialog.showModal === 'function') dialog.showModal();
+  }));
+  previousPhoto.addEventListener('click', () => showPhoto(activePhoto - 1));
+  nextPhoto.addEventListener('click', () => showPhoto(activePhoto + 1));
+  closeDialog.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+  dialog.addEventListener('close', () => { if (lastOpenedCard) lastOpenedCard.focus(); });
+  dialog.addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft') { event.preventDefault(); showPhoto(activePhoto - 1); }
+    if (event.key === 'ArrowRight') { event.preventDefault(); showPhoto(activePhoto + 1); }
+  });
+  let touchStartX = null;
+  dialogImage.addEventListener('touchstart', event => { touchStartX = event.changedTouches[0].screenX; }, { passive: true });
+  dialogImage.addEventListener('touchend', event => {
+    if (touchStartX === null) return;
+    const change = event.changedTouches[0].screenX - touchStartX;
+    touchStartX = null;
+    if (Math.abs(change) >= 60) showPhoto(activePhoto + (change < 0 ? 1 : -1));
+  }, { passive: true });
 })();
