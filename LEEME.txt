@@ -1,0 +1,8 @@
+Este sitio no publica las fotografias del PDF original de forma predeterminada.
+Al publicar una pagina mediante un codigo QR, cualquiera que tenga el enlace puede verla.
+Antes de agregar fotos de estudiantes (en particular menores de edad), confirma
+que la escuela y los responsables hayan autorizado expresamente su publicacion
+web publica. No incluyas datos personales, registros o documentos legibles.
+Una vez autorizadas las fotos, reemplaza en index.html los bloques
+'placeholder-photo' de la seccion #galeria por imagenes con texto alternativo.
+Ejemplo: <img src="fotografias-autorizadas/actividad1.jpg" alt="Actividad grupal en sala de clases">
